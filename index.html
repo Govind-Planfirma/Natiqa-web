@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q292ZMJJ31"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q292ZMJJ31');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natiqa AI - AI Voice-Enabled Business Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A2540;
+            --accent: #00D4AA;
+            --accent-hover: #00B894;
+            --secondary: #F6F9FC;
+            --text-dark: #0A2540;
+            --text-light: #425466;
+            --gradient-start: #00D4AA;
+            --gradient-end: #00A8E8;
+            --card-bg: #FFFFFF;
+            --border-subtle: rgba(10, 37, 64, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--secondary);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Fraunces', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-subtle);
+            animation: slideDown 0.6s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            background: var(--secondary);
+            padding: 0.5rem;
+            border-radius: 50px;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: none;
+            background: transparent;
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            box-shadow: 0 2px 10px rgba(0, 212, 170, 0.3);
+        }
+        
+        .lang-btn:hover:not(.active) {
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--accent);
+        }
+        
+        /* RTL Support for Arabic */
+        body[dir="rtl"] {
+            text-align: right;
+        }
+        
+        body[dir="rtl"] .nav-links {
+            flex-direction: row-reverse;
+        }
+        
+        body[dir="rtl"] .hero-container {
+            direction: rtl;
+        }
+        
+        body[dir="rtl"] .feature-list li {
+            padding-left: 0;
+            padding-right: 1.5rem;
+        }
+        
+        body[dir="rtl"] .feature-list li::before {
+            left: auto;
+            right: 0;
+        }
+        
+        body[dir="rtl"] .pricing-features li {
+            padding-left: 0;
+            padding-right: 2rem;
+        }
+        
+        body[dir="rtl"] .pricing-features li::before {
+            left: auto;
+            right: 0;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 170, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            background: linear-gradient(165deg, #F6F9FC 0%, #FFFFFF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 212, 170, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+        
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 170, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .hero-visual {
+            position: relative;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+            height: 100%;
+        }
+        
+        .video-container {
+            background: white;
+            border-radius: 30px;
+            padding: 1.5rem;
+            box-shadow: 0 20px 60px rgba(10, 37, 64, 0.1);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            min-height: 550px;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .video-container:hover .video-overlay {
+            opacity: 1;
+        }
+        
+        .video-overlay::after {
+            content: '▶';
+            color: white;
+            font-size: 2rem;
+            margin-left: 5px;
+        }
+        
+        .video-overlay:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 212, 170, 0.4);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+        
+        .section-header .label {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), rgba(0, 168, 232, 0.1));
+            color: var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+        
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .feature-card {
+            background: var(--secondary);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(10, 37, 64, 0.15);
+            background: white;
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            color: var(--text-light);
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        /* Use Cases Section */
+        .use-cases {
+            padding: 6rem 2rem;
+            background: var(--secondary);
+        }
+        
+        .use-cases-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .use-case-tabs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .use-case-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(10, 37, 64, 0.08);
+            transition: all 0.3s;
+        }
+        
+        .use-case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(10, 37, 64, 0.12);
+        }
+        
+        .use-case-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .use-case-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .use-case-card .example {
+            background: var(--secondary);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--text-dark);
+            border-left: 3px solid var(--accent);
+        }
+        
+        /* Integration Section */
+        .integrations {
+            padding: 6rem 2rem;
+            background: white;
+        }
+        
+        .integration-grid {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .integration-item {
+            background: var(--secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .integration-item:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+        
+        .integration-item .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .integration-item h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 6rem 2rem;
+            background: linear-gradient(165deg, var(--secondary) 0%, white 100%);
+        }
+        
+        .pricing-cards {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(10, 37, 64, 0.1);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(0, 212, 170, 0.2);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 1.5rem 0;
+        }
+        
+        .price span {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .pricing-features li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-light);
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary), #0D3A5F);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 170, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-container h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-container p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .use-case-tabs {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">🎙️</div>
+                Natiqa AI
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features" data-en="Features" data-ar="الميزات">Features</a></li>
+                <li><a href="#use-cases" data-en="Use Cases" data-ar="حالات الاستخدام">Use Cases</a></li>
+                <li><a href="#integrations" data-en="Integrations" data-ar="التكاملات">Integrations</a></li>
+                <li><a href="#pricing" data-en="Pricing" data-ar="الأسعار">Pricing</a></li>
+                <li>
+                    <div class="language-switcher">
+                        <button class="lang-btn active" onclick="switchLanguage('en')" id="lang-en">EN</button>
+                        <button class="lang-btn" onclick="switchLanguage('ar')" id="lang-ar">AR</button>
+                    </div>
+                </li>
+                <li><a href="#demo" class="cta-button" data-en="Get Demo" data-ar="احصل على عرض">Get Demo</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 id="heroTitle">Talk to Your Business. Get Instant Answers.</h1>
+                <p id="heroSubtitle">AI-powered voice assistant that connects to your accounting, CRM, and business systems. Ask questions naturally, get real-time insights—no reports needed.</p>
+                <div class="hero-buttons">
+                    <a href="#demo" class="btn-primary" id="startTrial">Start Free Trial →</a>
+                    <a href="#demo" class="btn-secondary" id="watchDemo">Watch Demo</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="video-container">
+                    <video 
+                        id="heroVideo"
+                        controls 
+                        poster="Human_AI.jpeg"
+                        preload="metadata">
+                        <source src="Natiqa_new.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay" onclick="document.getElementById('heroVideo').play(); this.style.opacity='0';"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <span class="label" id="featuresLabel">Core Capabilities</span>
+            <h2 id="featuresTitle">One AI Assistant for Finance, Sales & Management</h2>
+            <p id="featuresSubtitle">Voice-enabled intelligence that transforms how you interact with business data</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3 id="feature1Title">Advanced AI & LLM Intelligence</h3>
+                <p id="feature1Desc">Trained specifically for business, finance, and operations</p>
+                <ul class="feature-list">
+                    <li>Natural language understanding for complex queries</li>
+                    <li>Context-aware responses with conversation memory</li>
+                    <li>Secure role-based AI access</li>
+                    <li>Business-optimized LLM engine</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎙️</div>
+                <h3 id="feature2Title">Voice-Enabled Conversational AI</h3>
+                <p id="feature2Desc">Speak naturally to access your business data</p>
+                <ul class="feature-list">
+                    <li>Real-time voice question & answer</li>
+                    <li>Web, Mobile, and Amazon Alexa support</li>
+                    <li>Hands-free access to critical data</li>
+                    <li>Natural conversation flow</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3 id="feature3Title">Multi-Channel Access</h3>
+                <p id="feature3Desc">Access your business assistant anywhere, anytime</p>
+                <ul class="feature-list">
+                    <li>Web-based AI dashboard</li>
+                    <li>Mobile-friendly interface</li>
+                    <li>Amazon Alexa voice skill</li>
+                    <li>Seamless cross-platform experience</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3 id="feature4Title">Real-Time Accounting Integration</h3>
+                <p id="feature4Desc">Live connection to Tally and other accounting systems</p>
+                <ul class="feature-list">
+                    <li>Ledger balances & cash positions</li>
+                    <li>Receivables & payables tracking</li>
+                    <li>P&L summaries on demand</li>
+                    <li>No manual exports or duplications</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 id="feature5Title">CRM Integration & Sales Intelligence</h3>
+                <p id="feature5Desc">Unified view of finance and sales data</p>
+                <ul class="feature-list">
+                    <li>Zoho CRM & Salesforce integration</li>
+                    <li>Leads, deals & pipeline status</li>
+                    <li>Customer revenue tracking</li>
+                    <li>Activity & follow-up management</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3 id="feature6Title">AI Analytical Dashboard</h3>
+                <p id="feature6Desc">Predictive insights powered by AI models</p>
+                <ul class="feature-list">
+                    <li>Revenue trend analysis</li>
+                    <li>Cash flow forecasting</li>
+                    <li>Sales performance metrics</li>
+                    <li>Customer profitability insights</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3 id="feature7Title">WhatsApp & Email Automation</h3>
+                <p id="feature7Desc">Voice-triggered reports and alerts</p>
+                <ul class="feature-list">
+                    <li>WhatsApp Business integration</li>
+                    <li>Automated report distribution</li>
+                    <li>Voice-activated sending</li>
+                    <li>Smart scheduling & alerts</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3 id="feature8Title">Multi-Language Support</h3>
+                <p id="feature8Desc">Fully bilingual in English and Arabic</p>
+                <ul class="feature-list">
+                    <li>English & Arabic conversations</li>
+                    <li>Arabic financial terminology</li>
+                    <li>Optimized for Middle East markets</li>
+                    <li>Seamless language switching</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3 id="feature9Title">Enterprise-Grade Security</h3>
+                <p id="feature9Desc">Compliance-ready architecture</p>
+                <ul class="feature-list">
+                    <li>Role-based access control (RBAC)</li>
+                    <li>Encrypted data transmission</li>
+                    <li>Comprehensive audit logs</li>
+                    <li>GDPR & regional compliance</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases" id="use-cases">
+        <div class="use-cases-container">
+            <div class="section-header">
+                <span class="label" id="useCasesLabel">Real-World Applications</span>
+                <h2 id="useCasesTitle">How Businesses Use Natiqa AI</h2>
+                <p id="useCasesSubtitle">From finance teams to executives, see how voice AI transforms daily workflows</p>
+            </div>
+            <div class="use-case-tabs">
+                <div class="use-case-card">
+                    <div class="use-case-number">01</div>
+                    <h3>Finance Teams</h3>
+                    <p>Get instant access to financial data without opening multiple systems or running reports.</p>
+                    <div class="example">"What's today's cash balance?"</div>
+                    <div class="example">"Which customers have overdue invoices?"</div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-number">02</div>
+                    <h3>Sales Leaders</h3>
+                    <p>Track pipeline, deals, and customer revenue in real-time through natural conversation.</p>
+                    <div class="example">"Show me top deals closing this month"</div>
+                    <div class="example">"What's our customer retention rate?"</div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-number">03</div>
+                    <h3>Executives</h3>
+                    <p>Make data-driven decisions on the go with voice-powered business intelligence.</p>
+                    <div class="example">"Send today's sales report on WhatsApp"</div>
+                    <div class="example">"Compare revenue vs last quarter"</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrations Section -->
+    <section class="integrations" id="integrations">
+        <div class="section-header">
+            <span class="label" id="integrationsLabel">Seamless Connections</span>
+            <h2 id="integrationsTitle">Integrates With Your Business Stack</h2>
+            <p id="integrationsSubtitle">Connect to the tools you already use—no disruption to your workflow</p>
+        </div>
+        <div class="integration-grid">
+            <div class="integration-item">
+                <div class="icon">📊</div>
+                <h4>Tally</h4>
+            </div>
+            <div class="integration-item">
+                <div class="icon">🎯</div>
+                <h4>Zoho CRM</h4>
+            </div>
+            <div class="integration-item">
+                <div class="icon">☁️</div>
+                <h4>Salesforce</h4>
+            </div>
+            <div class="integration-item">
+                <div class="icon">💬</div>
+                <h4>WhatsApp Business</h4>
+            </div>
+            <div class="integration-item">
+                <div class="icon">📧</div>
+                <h4>Email Platforms</h4>
+            </div>
+            <div class="integration-item">
+                <div class="icon">🔊</div>
+                <h4>Amazon Alexa</h4>
+            </div>
+            <div class="integration-item">
+                <div class="icon">🔊</div>
+                <h4>Amazon Alexa</h4>
+            </div>
+             <div class="integration-item">
+                <div class="icon">📗</div>
+                <h4>QuickBooks</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <span class="label" id="pricingLabel">Simple Pricing</span>
+            <h2 id="pricingTitle">Choose Your Plan</h2>
+            <p id="pricingSubtitle">Flexible pricing for businesses of all sizes</p>
+        </div>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <p>Perfect for small businesses</p>
+                <div class="price">$99<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>Up to 5 users</li>
+                    <li>Web & mobile access</li>
+                    <li>Tally integration</li>
+                    <li>Email support</li>
+                    <li>Basic analytics</li>
+                    <li>English language</li>
+                </ul>
+                <a href="#demo" class="btn-primary" style="width: 100%; text-align: center; display: block; margin-top: 1.5rem;">Get Started</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <span class="pricing-badge">Most Popular</span>
+                <h3>Professional</h3>
+                <p>For growing companies</p>
+                <div class="price">$299<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>Up to 20 users</li>
+                    <li>All Starter features</li>
+                    <li>CRM integration (Zoho/Salesforce)</li>
+                    <li>WhatsApp automation</li>
+                    <li>Advanced analytics & AI insights</li>
+                    <li>English & Arabic support</li>
+                    <li>Priority support</li>
+                    <li>Alexa integration</li>
+                </ul>
+                <a href="#demo" class="btn-primary" style="width: 100%; text-align: center; display: block; margin-top: 1.5rem;">Get Started</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Enterprise</h3>
+                <p>Custom solutions at scale</p>
+                <div class="price">Custom</div>
+                <ul class="pricing-features">
+                    <li>Unlimited users</li>
+                    <li>All Professional features</li>
+                    <li>Custom integrations</li>
+                    <li>White-label options</li>
+                    <li>Multi-tenant architecture</li>
+                    <li>Dedicated support</li>
+                    <li>SLA guarantees</li>
+                    <li>Custom AI training</li>
+                </ul>
+                <a href="#demo" class="btn-secondary" style="width: 100%; text-align: center; display: block; margin-top: 1.5rem;">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2 id="ctaTitle">Ready to Transform Your Business Intelligence?</h2>
+            <p id="ctaSubtitle">Join forward-thinking companies using voice AI to make faster, smarter decisions</p>
+            <a href="#demo" class="btn-primary" id="ctaButton" style="font-size: 1.2rem; padding: 1.2rem 3rem;">Start Your Free Trial</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Natiqa AI</h4>
+                <p id="footerAbout" style="opacity: 0.8; line-height: 1.8;">AI-powered voice assistant that transforms how you interact with business data. Get instant insights from accounting, CRM, and sales systems.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#integrations">Integrations</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#demo">Demo</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">API</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Natiqa AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                // Hero Section
+                heroTitle: "Talk to Your Business. Get Instant Answers.",
+                heroSubtitle: "AI-powered voice assistant that connects to your accounting, CRM, and business systems. Ask questions naturally, get real-time insights—no reports needed.",
+                startTrial: "Start Free Trial →",
+                watchDemo: "Watch Demo",
+                
+                // Features Section
+                featuresLabel: "Core Capabilities",
+                featuresTitle: "One AI Assistant for Finance, Sales & Management",
+                featuresSubtitle: "Voice-enabled intelligence that transforms how you interact with business data",
+                
+                // Feature Cards
+                feature1Title: "Advanced AI & LLM Intelligence",
+                feature1Desc: "Trained specifically for business, finance, and operations",
+                feature2Title: "Voice-Enabled Conversational AI",
+                feature2Desc: "Speak naturally to access your business data",
+                feature3Title: "Multi-Channel Access",
+                feature3Desc: "Access your business assistant anywhere, anytime",
+                feature4Title: "Real-Time Accounting Integration",
+                feature4Desc: "Live connection to Tally and other accounting systems",
+                feature5Title: "CRM Integration & Sales Intelligence",
+                feature5Desc: "Unified view of finance and sales data",
+                feature6Title: "AI Analytical Dashboard",
+                feature6Desc: "Predictive insights powered by AI models",
+                feature7Title: "WhatsApp & Email Automation",
+                feature7Desc: "Voice-triggered reports and alerts",
+                feature8Title: "Multi-Language Support",
+                feature8Desc: "Fully bilingual in English and Arabic",
+                feature9Title: "Enterprise-Grade Security",
+                feature9Desc: "Compliance-ready architecture",
+                
+                // Use Cases
+                useCasesLabel: "Real-World Applications",
+                useCasesTitle: "How Businesses Use Natiqa AI",
+                useCasesSubtitle: "From finance teams to executives, see how voice AI transforms daily workflows",
+                
+                // Integrations
+                integrationsLabel: "Seamless Connections",
+                integrationsTitle: "Integrates With Your Business Stack",
+                integrationsSubtitle: "Connect to the tools you already use—no disruption to your workflow",
+                
+                // Pricing
+                pricingLabel: "Simple Pricing",
+                pricingTitle: "Choose Your Plan",
+                pricingSubtitle: "Flexible pricing for businesses of all sizes",
+                
+                // CTA
+                ctaTitle: "Ready to Transform Your Business Intelligence?",
+                ctaSubtitle: "Join forward-thinking companies using voice AI to make faster, smarter decisions",
+                ctaButton: "Start Your Free Trial",
+                
+                // Footer
+                footerAbout: "AI-powered voice assistant that transforms how you interact with business data. Get instant insights from accounting, CRM, and sales systems.",
+            },
+            ar: {
+                // Hero Section
+                heroTitle: "تحدث مع عملك. احصل على إجابات فورية.",
+                heroSubtitle: "مساعد صوتي مدعوم بالذكاء الاصطناعي يتصل بأنظمة المحاسبة وإدارة علاقات العملاء والأنظمة التجارية. اطرح الأسئلة بشكل طبيعي، واحصل على رؤى في الوقت الفعلي - بدون الحاجة إلى تقارير.",
+                startTrial: "ابدأ تجربة مجانية ←",
+                watchDemo: "شاهد العرض التوضيحي",
+                
+                // Features Section
+                featuresLabel: "القدرات الأساسية",
+                featuresTitle: "مساعد ذكاء اصطناعي واحد للمالية والمبيعات والإدارة",
+                featuresSubtitle: "ذكاء مدعوم بالصوت يحول طريقة تفاعلك مع بيانات الأعمال",
+                
+                // Feature Cards
+                feature1Title: "الذكاء الاصطناعي المتقدم",
+                feature1Desc: "مدرب خصيصًا للأعمال والمالية والعمليات",
+                feature2Title: "الذكاء الاصطناعي التحاوري الصوتي",
+                feature2Desc: "تحدث بشكل طبيعي للوصول إلى بيانات عملك",
+                feature3Title: "الوصول متعدد القنوات",
+                feature3Desc: "الوصول إلى مساعدك التجاري في أي مكان وزمان",
+                feature4Title: "التكامل المحاسبي في الوقت الفعلي",
+                feature4Desc: "اتصال مباشر مع Tally وأنظمة المحاسبة الأخرى",
+                feature5Title: "تكامل CRM وذكاء المبيعات",
+                feature5Desc: "عرض موحد لبيانات المالية والمبيعات",
+                feature6Title: "لوحة التحليلات بالذكاء الاصطناعي",
+                feature6Desc: "رؤى تنبؤية مدعومة بنماذج الذكاء الاصطناعي",
+                feature7Title: "أتمتة WhatsApp والبريد الإلكتروني",
+                feature7Desc: "تقارير وتنبيهات مفعلة بالصوت",
+                feature8Title: "الدعم متعدد اللغات",
+                feature8Desc: "ثنائي اللغة بالكامل بالإنجليزية والعربية",
+                feature9Title: "أمان على مستوى المؤسسات",
+                feature9Desc: "بنية جاهزة للامتثال",
+                
+                // Use Cases
+                useCasesLabel: "التطبيقات الواقعية",
+                useCasesTitle: "كيف تستخدم الشركات Natiqa AI",
+                useCasesSubtitle: "من فرق المالية إلى المديرين التنفيذيين، شاهد كيف يحول الذكاء الاصطناعي الصوتي سير العمل اليومي",
+                
+                // Integrations
+                integrationsLabel: "اتصالات سلسة",
+                integrationsTitle: "يتكامل مع مجموعة أعمالك",
+                integrationsSubtitle: "اتصل بالأدوات التي تستخدمها بالفعل - بدون تعطيل لسير عملك",
+                
+                // Pricing
+                pricingLabel: "أسعار بسيطة",
+                pricingTitle: "اختر خطتك",
+                pricingSubtitle: "أسعار مرنة للشركات بجميع الأحجام",
+                
+                // CTA
+                ctaTitle: "هل أنت مستعد لتحويل ذكاء أعمالك؟",
+                ctaSubtitle: "انضم إلى الشركات المتطلعة للأمام التي تستخدم الذكاء الاصطناعي الصوتي لاتخاذ قرارات أسرع وأذكى",
+                ctaButton: "ابدأ تجربتك المجانية",
+                
+                // Footer
+                footerAbout: "مساعد صوتي مدعوم بالذكاء الاصطناعي يحول طريقة تفاعلك مع بيانات الأعمال. احصل على رؤى فورية من أنظمة المحاسبة وإدارة علاقات العملاء والمبيعات.",
+            }
+        };
+
+        function switchLanguage(lang) {
+            const body = document.body;
+            const t = translations[lang];
+            
+            // Update HTML lang and dir attributes
+            document.documentElement.lang = lang;
+            body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            
+            // Update active button state
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
+            
+            // Update navigation links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                const key = link.getAttribute(`data-${lang}`);
+                if (key) link.textContent = key;
+            });
+            
+            // Update content using data attributes
+            updateTextContent('heroTitle', t.heroTitle);
+            updateTextContent('heroSubtitle', t.heroSubtitle);
+            updateTextContent('startTrial', t.startTrial);
+            updateTextContent('watchDemo', t.watchDemo);
+            
+            updateTextContent('featuresLabel', t.featuresLabel);
+            updateTextContent('featuresTitle', t.featuresTitle);
+            updateTextContent('featuresSubtitle', t.featuresSubtitle);
+            
+            updateTextContent('feature1Title', t.feature1Title);
+            updateTextContent('feature1Desc', t.feature1Desc);
+            updateTextContent('feature2Title', t.feature2Title);
+            updateTextContent('feature2Desc', t.feature2Desc);
+            updateTextContent('feature3Title', t.feature3Title);
+            updateTextContent('feature3Desc', t.feature3Desc);
+            updateTextContent('feature4Title', t.feature4Title);
+            updateTextContent('feature4Desc', t.feature4Desc);
+            updateTextContent('feature5Title', t.feature5Title);
+            updateTextContent('feature5Desc', t.feature5Desc);
+            updateTextContent('feature6Title', t.feature6Title);
+            updateTextContent('feature6Desc', t.feature6Desc);
+            updateTextContent('feature7Title', t.feature7Title);
+            updateTextContent('feature7Desc', t.feature7Desc);
+            updateTextContent('feature8Title', t.feature8Title);
+            updateTextContent('feature8Desc', t.feature8Desc);
+            updateTextContent('feature9Title', t.feature9Title);
+            updateTextContent('feature9Desc', t.feature9Desc);
+            
+            updateTextContent('useCasesLabel', t.useCasesLabel);
+            updateTextContent('useCasesTitle', t.useCasesTitle);
+            updateTextContent('useCasesSubtitle', t.useCasesSubtitle);
+            
+            updateTextContent('integrationsLabel', t.integrationsLabel);
+            updateTextContent('integrationsTitle', t.integrationsTitle);
+            updateTextContent('integrationsSubtitle', t.integrationsSubtitle);
+            
+            updateTextContent('pricingLabel', t.pricingLabel);
+            updateTextContent('pricingTitle', t.pricingTitle);
+            updateTextContent('pricingSubtitle', t.pricingSubtitle);
+            
+            updateTextContent('ctaTitle', t.ctaTitle);
+            updateTextContent('ctaSubtitle', t.ctaSubtitle);
+            updateTextContent('ctaButton', t.ctaButton);
+            
+            updateTextContent('footerAbout', t.footerAbout);
+            
+            // Store preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        function updateTextContent(id, text) {
+            const element = document.getElementById(id);
+            if (element) element.textContent = text;
+        }
+        
+        // Load saved language preference on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            if (savedLang === 'ar') {
+                switchLanguage('ar');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 4px 20px rgba(10, 37, 64, 0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
